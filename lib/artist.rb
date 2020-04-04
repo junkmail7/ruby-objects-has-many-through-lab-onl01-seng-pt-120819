@@ -18,11 +18,13 @@ class Artist
   
   def new_song(genre,songname)
     @songs << songname
-    songname.artist = self
+    songname.artist = self.name
   end
   
   def songs
-    @songs
+    @songs.collect do |song|
+      song.artist==self
+    end
   end
   
   def genres
