@@ -3,7 +3,6 @@ class Genre
   @@all=[]
   def initialize(name)
     @name=name
-    @songs=[]
     @@all << self
   end
   
@@ -11,18 +10,17 @@ class Genre
     @@all
   end
   
-  def add_song(songname)
-    @songs << songname
-    @songs.genre = self
-  end
-  
   def songs
-    @songs
+    Song.all.select do |song|
+      song.genre==self
+    end
   end
   
   def artists
-    @songs.collect do |song|
-      song.artist
+    artistsofgenre=[]
+    songs.each do |song|
+      artistsofgenre << song.artist
     end
+    return artistsofgenre
   end
 end
