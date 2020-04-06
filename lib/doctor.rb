@@ -21,10 +21,10 @@ class Doctor
   end
   
   def patients
-    allofem=[]
+    allpatients=[]
     appointments.each do |eachone|
-      allofem << eachone.appointments
+      allpatients << eachone.patient
     end
-    return allofem
+    return allpatients
   end
 end
