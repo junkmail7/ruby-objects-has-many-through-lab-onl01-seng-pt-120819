@@ -20,4 +20,11 @@ class Patient
     end
   end
   
+  def doctors
+    alldoctors=[]
+    appointments.each do |eachone|
+      alldoctors << eachone.doctor
+    end
+    return alldoctors
+  end
 end
