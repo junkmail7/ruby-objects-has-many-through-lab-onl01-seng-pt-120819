@@ -11,7 +11,7 @@ class Doctor
   end
 
   def new_appointment(patient, date)
-    Appointment.new(date, self, patient)
+    Appointment.new(date, patient, self)
   end
 
   def appointments
@@ -21,10 +21,10 @@ class Doctor
   end
   
   def patients
-    allofem=[]
+    allpatients=[]
     appointments.each do |eachone|
-      allofem << eachone.appointments
+      allpatients << eachone.patient
     end
-    return allofem
+    return allpatients
   end
 end

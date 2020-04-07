@@ -10,17 +10,21 @@ class Patient
     @@all
   end
   
-  def songs
-    Song.all.select do |song|
-      song.genre==self
+  def new_appointment(doctor, date)
+    Appointment.new(date, self, doctor)
+  end
+  
+  def appointments
+    Appointment.all.select do |appointment|
+      appointment.patient==self
     end
   end
   
-  def artists
-    artistsofgenre=[]
-    songs.each do |song|
-      artistsofgenre << song.artist
+  def doctors
+    alldoctors=[]
+    appointments.each do |eachone|
+      alldoctors << eachone.doctor
     end
-    return artistsofgenre
+    return alldoctors
   end
 end
